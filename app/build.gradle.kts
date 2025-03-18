@@ -3,6 +3,7 @@ plugins {
     alias(libs.plugins.kotlin.android)
     alias(libs.plugins.kotlin.compose)
     alias(libs.plugins.jetbrains.kotlin.serialization )
+    id("com.google.devtools.ksp")
 }
 
 android {
@@ -74,6 +75,18 @@ dependencies {
     //Paginiation
     implementation("androidx.paging:paging-runtime:3.3.6")
     implementation("androidx.paging:paging-compose:3.3.6")
+    implementation(libs.androidx.navigation.compose)
+
+    //Room DB
+
+    val room_version = "2.6.1"
+    implementation("androidx.room:room-ktx:$room_version")
+    ksp("androidx.room:room-compiler:$room_version")
+// optional - Test helpers
+    testImplementation("androidx.room:room-testing:$room_version")
+
+    // optional - Paging 3 Integration
+    implementation("androidx.room:room-paging:$room_version")
 
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)

@@ -1,16 +1,13 @@
-package com.rentx.dragonballwiki.presentation.home_page
+package com.rentx.dragonballwiki.presentation.home_page.components
 
-import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
-import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.shape.RoundedCornerShape
-import androidx.compose.material3.CircularProgressIndicator
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.CompositionLocalProvider
@@ -20,8 +17,6 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.toArgb
-import androidx.compose.ui.layout.ContentScale
-import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.AnnotatedString
 import androidx.compose.ui.text.SpanStyle
 import androidx.compose.ui.text.buildAnnotatedString
@@ -31,11 +26,9 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import coil3.ColorImage
 import coil3.annotation.ExperimentalCoilApi
-import coil3.compose.AsyncImagePainter
 import coil3.compose.AsyncImagePreviewHandler
 import coil3.compose.LocalAsyncImagePreviewHandler
 import coil3.compose.rememberAsyncImagePainter
-import com.rentx.dragonballwiki.R
 import com.rentx.dragonballwiki.model.DragonBallCharacter
 
 @OptIn(ExperimentalCoilApi::class)
@@ -82,62 +75,11 @@ fun DragonBallCharactersItem(
     }
 }
 
-@Composable
-private fun sectionText(q: String, a: String): AnnotatedString {
-    return buildAnnotatedString {
-        withStyle(style = SpanStyle(
-            fontSize = 24.sp,
-            color = Color(0xFFFB4813)
-        )){
-            append("$q: ")
-        }
-        withStyle(style = SpanStyle(
-            fontSize = 22.sp,
-            color = Color.Black
-        )
-        ) {
-            append(a)
-        }
-    }
-}
-
-@Composable
-fun CharacterImage(modifier: Modifier = Modifier, state: AsyncImagePainter. State) {
-    when(state){
-        AsyncImagePainter.State.Empty,
-        is AsyncImagePainter.State.Loading -> {
-            CircularProgressIndicator(modifier)
-        }
-        is AsyncImagePainter.State.Error -> {
-            Image(
-                modifier = modifier
-                    .height(300.dp)
-                    .fillMaxWidth(),
-                painter = painterResource(R.drawable.dragon_ball_logo),
-                contentDescription = null,
-                contentScale = ContentScale.Fit
-            )
-        }
-
-        is AsyncImagePainter.State.Success -> {
-            Image(
-                modifier = modifier
-                    .height(300.dp)
-                    .fillMaxWidth(),
-                painter = state.painter,
-                contentDescription = null,
-                contentScale = ContentScale.Fit
-            )
-        }
-    }
-}
-
 @Preview
 @Composable
 private fun DragonBallCharactersItemPrev() {
     DragonBallCharactersItem(
         character = DragonBallCharacter(
-            id = 1,
             name = "Guko",
             ki = "5000",
             maxKi = "10000000000",

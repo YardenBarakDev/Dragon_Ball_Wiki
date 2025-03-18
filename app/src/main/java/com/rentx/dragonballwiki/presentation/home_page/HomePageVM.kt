@@ -2,29 +2,31 @@ package com.rentx.dragonballwiki.presentation.home_page
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import androidx.paging.ExperimentalPagingApi
 import androidx.paging.Pager
 import androidx.paging.PagingConfig
 import androidx.paging.cachedIn
-import com.rentx.dragonballwiki.data.paging.DragonBallPaging
-import com.rentx.dragonballwiki.model.DragonBallCharacter
+import com.rentx.dragonballwiki.data.local.RoomDBConstructor
+import com.rentx.dragonballwiki.data.paging.DragonBallRemoteMediator
 import com.rentx.dragonballwiki.model.DragonBallRepository
-import kotlinx.coroutines.flow.MutableStateFlow
-import kotlinx.coroutines.flow.asStateFlow
 
-class HomePageVM(private val repository: DragonBallRepository) : ViewModel() {
+class HomePageVM(
+    private val repository: DragonBallRepository,
+    private val database: RoomDBConstructor,
+) : ViewModel() {
 
-    private val _charactersList = MutableStateFlow<List<DragonBallCharacter>>(emptyList())
-    val charactersList = _charactersList.asStateFlow()
-
+    @OptIn(ExperimentalPagingApi::class)
     val flow = Pager(
         PagingConfig(
             pageSize = 10,
-            prefetchDistance = 10
-        )
-    ) {
-        DragonBallPaging(repository)
-    }.flow
+            prefetchDistance = 1,
+            enablePlaceholders = false
+        ),
+        pagingSourceFactory = {
+            database.characterDao.getAllCharacters()
+        },
+        remoteMediator = DragonBallRemoteMediator(database, repository)
+    ).flow
         .cachedIn(viewModelScope)
-
 
 }

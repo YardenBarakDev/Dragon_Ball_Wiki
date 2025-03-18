@@ -1,4 +1,4 @@
-package com.rentx.dragonballwiki.data.dto
+package com.rentx.dragonballwiki.data.network.dto
 
 import kotlinx.serialization.Serializable
 

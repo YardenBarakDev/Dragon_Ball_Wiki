@@ -1,7 +1,9 @@
 package com.rentx.dragonballwiki.model
 
+import kotlinx.serialization.Serializable
+
+@Serializable
 data class DragonBallCharacter(
-    val id: Int,
     val name: String,
     val ki: String,
     val maxKi: String,

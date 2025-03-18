@@ -1,6 +1,6 @@
 package com.rentx.dragonballwiki.data.network
 
-import com.rentx.dragonballwiki.data.dto.DragonBallCharactersResponse
+import com.rentx.dragonballwiki.data.network.dto.DragonBallCharactersResponse
 import io.ktor.client.HttpClient
 import io.ktor.client.call.body
 import io.ktor.client.request.get

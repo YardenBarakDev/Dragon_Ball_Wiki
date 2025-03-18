@@ -2,6 +2,7 @@ package com.rentx.dragonballwiki.data.paging
 
 import androidx.paging.PagingSource
 import androidx.paging.PagingState
+import com.rentx.dragonballwiki.data.mappers.toDragonBallCharacter
 import com.rentx.dragonballwiki.model.DragonBallCharacter
 import com.rentx.dragonballwiki.model.DragonBallRepository
 import io.ktor.client.plugins.HttpRequestTimeoutException
@@ -16,7 +17,7 @@ class DragonBallPaging(
             val currentPage = params.key ?: 1
             val response = backend.getAllCharacters(currentPage)
             LoadResult.Page(
-                data = response,
+                data = response.toDragonBallCharacter(),
                 prevKey = if (currentPage == 1) null else currentPage - 1,
                 nextKey = currentPage + 1
             )

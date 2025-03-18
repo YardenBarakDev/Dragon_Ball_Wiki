@@ -1,12 +1,12 @@
 package com.rentx.dragonballwiki.data.mappers
 
-import com.rentx.dragonballwiki.data.dto.DragonBallCharactersResponse
+import com.rentx.dragonballwiki.data.local.DragonBallCharacterEntity
+import com.rentx.dragonballwiki.data.network.dto.DragonBallCharactersResponse
 import com.rentx.dragonballwiki.model.DragonBallCharacter
 
 fun DragonBallCharactersResponse.toDragonBallCharacter(): List<DragonBallCharacter> {
     return this.items.map {
         DragonBallCharacter(
-            id = it.id,
             name = it.name,
             ki = it.ki,
             maxKi = it.maxKi,
@@ -18,4 +18,18 @@ fun DragonBallCharactersResponse.toDragonBallCharacter(): List<DragonBallCharact
             deletedAt = it.deletedAt
         )
     }
+}
+
+fun DragonBallCharacterEntity.toDragonBallCharacter(): DragonBallCharacter {
+    return DragonBallCharacter(
+        name = name,
+        ki = ki,
+        maxKi = maxKi,
+        race = race,
+        gender = gender,
+        description = description,
+        image = image,
+        affiliation = affiliation,
+        deletedAt = deletedAt
+    )
 }
