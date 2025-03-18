@@ -1,7 +1,7 @@
 package com.rentx.dragonballwiki.di
 
 import androidx.room.Room
-import com.rentx.dragonballwiki.data.local.RoomDBConstructor
+import com.rentx.core.local_db.RoomDBConstructor
 import com.rentx.dragonballwiki.data.network.KtorRemoteDragonBallSource
 import com.rentx.dragonballwiki.data.network.RemoteDataSource
 import com.rentx.dragonballwiki.data.repository.DragonBallRepositoryImpl

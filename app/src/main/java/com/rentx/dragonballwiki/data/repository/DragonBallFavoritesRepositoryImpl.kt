@@ -1,6 +1,6 @@
 package com.rentx.dragonballwiki.data.repository
 
-import com.rentx.dragonballwiki.data.local.RoomDBConstructor
+import com.rentx.core.local_db.RoomDBConstructor
 import com.rentx.dragonballwiki.presentation.favorites.DragonBallFavoritesRepository
 
 class DragonBallFavoritesRepositoryImpl(

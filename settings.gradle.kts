@@ -21,3 +21,5 @@ dependencyResolutionManagement {
 
 rootProject.name = "Dragon Ball Wiki"
 include(":app")
+include(":core")
+include(":home_page")

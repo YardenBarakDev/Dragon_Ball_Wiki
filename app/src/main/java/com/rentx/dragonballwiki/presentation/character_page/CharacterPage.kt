@@ -28,7 +28,7 @@ import coil3.compose.AsyncImagePreviewHandler
 import coil3.compose.LocalAsyncImagePreviewHandler
 import coil3.compose.rememberAsyncImagePainter
 import com.rentx.dragonballwiki.R
-import com.rentx.dragonballwiki.data.local.DragonBallCharacterEntity
+import com.rentx.core.local_db.DragonBallCharacterEntity
 import com.rentx.dragonballwiki.presentation.components.CharacterImage
 import com.rentx.dragonballwiki.presentation.SelectedCharacterVM
 import com.rentx.dragonballwiki.presentation.components.sectionText

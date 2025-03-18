@@ -10,7 +10,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
-import com.rentx.dragonballwiki.data.local.DragonBallCharacterEntity
+import com.rentx.core.local_db.DragonBallCharacterEntity
 import com.rentx.dragonballwiki.data.mappers.toDragonBallCharacter
 import com.rentx.dragonballwiki.presentation.FavoritesCharactersVM
 import com.rentx.dragonballwiki.presentation.components.DragonBallCharactersItem

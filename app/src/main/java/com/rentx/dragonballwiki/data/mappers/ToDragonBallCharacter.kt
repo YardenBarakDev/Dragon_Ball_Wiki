@@ -1,6 +1,6 @@
 package com.rentx.dragonballwiki.data.mappers
 
-import com.rentx.dragonballwiki.data.local.DragonBallCharacterEntity
+import com.rentx.core.local_db.DragonBallCharacterEntity
 import com.rentx.dragonballwiki.data.network.dto.DragonBallCharactersResponse
 import com.rentx.dragonballwiki.model.DragonBallCharacter
 

@@ -1,4 +1,4 @@
-package com.rentx.dragonballwiki.data.local
+package com.rentx.core.local_db
 
 import androidx.room.Entity
 import androidx.room.PrimaryKey

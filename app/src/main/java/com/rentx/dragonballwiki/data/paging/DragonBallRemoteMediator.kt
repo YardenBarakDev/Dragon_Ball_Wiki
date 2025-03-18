@@ -5,8 +5,8 @@ import androidx.paging.LoadType
 import androidx.paging.PagingState
 import androidx.paging.RemoteMediator
 import androidx.room.withTransaction
-import com.rentx.dragonballwiki.data.local.DragonBallCharacterEntity
-import com.rentx.dragonballwiki.data.local.RoomDBConstructor
+import com.rentx.core.local_db.DragonBallCharacterEntity
+import com.rentx.core.local_db.RoomDBConstructor
 import com.rentx.dragonballwiki.data.mappers.toDragonBallCharacterEntity
 import com.rentx.dragonballwiki.model.DragonBallRepository
 import kotlinx.coroutines.Dispatchers

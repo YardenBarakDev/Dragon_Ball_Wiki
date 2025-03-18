@@ -6,7 +6,7 @@ import androidx.paging.ExperimentalPagingApi
 import androidx.paging.Pager
 import androidx.paging.PagingConfig
 import androidx.paging.cachedIn
-import com.rentx.dragonballwiki.data.local.RoomDBConstructor
+import com.rentx.core.local_db.RoomDBConstructor
 import com.rentx.dragonballwiki.data.paging.DragonBallRemoteMediator
 import com.rentx.dragonballwiki.model.DragonBallRepository
 

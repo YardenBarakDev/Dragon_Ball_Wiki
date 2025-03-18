@@ -1,6 +1,6 @@
 package com.rentx.dragonballwiki.presentation.favorites
 
-import com.rentx.dragonballwiki.data.local.DragonBallCharacterEntity
+import com.rentx.core.local_db.DragonBallCharacterEntity
 import kotlinx.coroutines.flow.Flow
 
 interface DragonBallFavoritesRepository {

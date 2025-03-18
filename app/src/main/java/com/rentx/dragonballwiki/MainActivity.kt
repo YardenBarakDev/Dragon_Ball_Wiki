@@ -16,12 +16,11 @@ import com.rentx.dragonballwiki.navigation.Route
 import com.rentx.dragonballwiki.presentation.FavoritesCharactersVM
 import com.rentx.dragonballwiki.presentation.character_page.CharacterPage
 import com.rentx.dragonballwiki.presentation.components.MainHeader
-import com.rentx.dragonballwiki.presentation.home_page.DragonBallHomePage
-import com.rentx.dragonballwiki.presentation.home_page.HomePageVM
 import com.rentx.dragonballwiki.presentation.SelectedCharacterVM
 import com.rentx.dragonballwiki.presentation.favorites.FavoritesScreen
+import com.rentx.dragonballwiki.presentation.home_page.HomePageVM
 import com.rentx.dragonballwiki.ui.theme.DragonBallWikiTheme
-import kotlinx.coroutines.delay
+import com.rentx.dragonballwiki.presentation.home_page.DragonBallHomePage
 import org.koin.androidx.compose.koinViewModel
 
 
@@ -50,7 +49,11 @@ class MainActivity : ComponentActivity() {
                             composable<Route.DragonBallHomePage> {
                                 val viewModel = koinViewModel<HomePageVM>()
 
-                                DragonBallHomePage(Modifier.padding(padding), viewModel, selectedCharacterVM) { character ->
+                                DragonBallHomePage(
+                                    Modifier.padding(
+                                        padding
+                                    ), viewModel, selectedCharacterVM
+                                ) { character ->
                                     selectedCharacterVM.onSelectedCharacter(character)
                                     navController.navigate(Route.CharacterDetail)
                                 }

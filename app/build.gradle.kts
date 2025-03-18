@@ -3,7 +3,7 @@ plugins {
     alias(libs.plugins.kotlin.android)
     alias(libs.plugins.kotlin.compose)
     alias(libs.plugins.jetbrains.kotlin.serialization )
-    id("com.google.devtools.ksp")
+
 }
 
 android {
@@ -43,6 +43,8 @@ android {
 
 dependencies {
 
+    implementation(project(":core"))
+    implementation(project(":home_page"))
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.lifecycle.runtime.ktx)
     implementation(libs.androidx.activity.compose)
@@ -53,32 +55,15 @@ dependencies {
     implementation(libs.androidx.material3)
     implementation(libs.kotlinx.coroutines.android)
 
-    implementation(libs.bundles.ktor)
-    implementation(libs.bundles.coil)
 
-    implementation(libs.kotlinx.serialization.json)
+
 
     implementation("androidx.lifecycle:lifecycle-viewmodel-compose:2.6.2")
 
-    implementation("io.insert-koin:koin-android:4.0.0")
-    implementation("io.insert-koin:koin-androidx-compose:4.0.0")
 
 
-    //Paginiation
-    implementation("androidx.paging:paging-runtime:3.3.6")
-    implementation("androidx.paging:paging-compose:3.3.6")
     implementation(libs.androidx.navigation.compose)
 
-    //Room DB
-
-    val room_version = "2.6.1"
-    implementation("androidx.room:room-ktx:$room_version")
-    ksp("androidx.room:room-compiler:$room_version")
-// optional - Test helpers
-    testImplementation("androidx.room:room-testing:$room_version")
-
-    // optional - Paging 3 Integration
-    implementation("androidx.room:room-paging:$room_version")
 
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)

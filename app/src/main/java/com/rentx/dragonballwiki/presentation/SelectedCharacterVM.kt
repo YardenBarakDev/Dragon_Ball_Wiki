@@ -2,8 +2,7 @@ package com.rentx.dragonballwiki.presentation
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.rentx.dragonballwiki.data.local.DragonBallCharacterEntity
-import com.rentx.dragonballwiki.model.DragonBallCharacter
+import com.rentx.core.local_db.DragonBallCharacterEntity
 import com.rentx.dragonballwiki.presentation.favorites.DragonBallFavoritesRepository
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.MutableStateFlow
