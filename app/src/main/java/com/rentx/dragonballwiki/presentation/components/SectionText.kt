@@ -1,4 +1,4 @@
-package com.rentx.dragonballwiki.presentation.home_page.components
+package com.rentx.dragonballwiki.presentation.components
 
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.graphics.Color

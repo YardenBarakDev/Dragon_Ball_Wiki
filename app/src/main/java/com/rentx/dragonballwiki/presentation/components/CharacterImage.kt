@@ -1,4 +1,4 @@
-package com.rentx.dragonballwiki.presentation.home_page.components
+package com.rentx.dragonballwiki.presentation.components
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.fillMaxWidth

@@ -9,14 +9,14 @@ import androidx.compose.foundation.lazy.rememberLazyListState
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.graphics.Color
 import androidx.paging.compose.LazyPagingItems
 import androidx.paging.compose.collectAsLazyPagingItems
 import com.rentx.dragonballwiki.data.local.DragonBallCharacterEntity
 import com.rentx.dragonballwiki.data.mappers.toDragonBallCharacter
 import com.rentx.dragonballwiki.model.DragonBallCharacter
-import com.rentx.dragonballwiki.presentation.home_page.components.DragonBallCharactersItem
-import com.rentx.dragonballwiki.presentation.home_page.components.SelectedCharacterVM
+import com.rentx.dragonballwiki.presentation.components.DragonBallCharactersItem
+import com.rentx.dragonballwiki.presentation.components.SelectedCharacterVM
+import com.rentx.dragonballwiki.ui.theme.DBOrange
 
 @Composable
 fun DragonBallHomePage(
@@ -39,7 +39,7 @@ private fun DragonBallHomePageImpl(
         state = rememberLazyListState(),
         modifier = modifier
             .fillMaxSize()
-            .background(Color(0xFFFA4714)),
+            .background(DBOrange),
         horizontalAlignment = Alignment.CenterHorizontally,
     )
     {

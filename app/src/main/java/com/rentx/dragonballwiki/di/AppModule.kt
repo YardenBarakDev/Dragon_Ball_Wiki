@@ -10,7 +10,7 @@ import com.rentx.dragonballwiki.data.repository.DragonBallRepositoryImpl
 import com.rentx.dragonballwiki.data.paging.DragonBallPaging
 import com.rentx.dragonballwiki.model.DragonBallRepository
 import com.rentx.dragonballwiki.presentation.home_page.HomePageVM
-import com.rentx.dragonballwiki.presentation.home_page.components.SelectedCharacterVM
+import com.rentx.dragonballwiki.presentation.components.SelectedCharacterVM
 import io.ktor.client.HttpClient
 import io.ktor.client.engine.okhttp.OkHttp
 import io.ktor.client.plugins.contentnegotiation.ContentNegotiation
