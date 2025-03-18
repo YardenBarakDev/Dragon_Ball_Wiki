@@ -2,6 +2,7 @@ package com.rentx.dragonballwiki.presentation.components
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
@@ -15,7 +16,9 @@ import androidx.compose.ui.unit.dp
 import com.rentx.dragonballwiki.R
 
 @Composable
-fun MainHeader() {
+fun MainHeader(
+    onFavoriteClick: () -> Unit
+) {
     Box(
         modifier = Modifier
             .fillMaxWidth()
@@ -30,7 +33,8 @@ fun MainHeader() {
         Image(
             modifier = Modifier
                 .padding(horizontal = 8.dp)
-                .align(Alignment.CenterStart),
+                .align(Alignment.CenterStart)
+                .clickable { onFavoriteClick.invoke() },
             painter = painterResource(R.drawable.baseline_favorite_24),
             contentDescription = null
         )
@@ -40,5 +44,5 @@ fun MainHeader() {
 @Preview
 @Composable
 private fun MainHeaderPrev() {
-    MainHeader()
+    MainHeader{}
 }

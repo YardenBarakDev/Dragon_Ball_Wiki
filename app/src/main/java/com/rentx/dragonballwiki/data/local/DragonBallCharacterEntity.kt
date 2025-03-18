@@ -17,4 +17,5 @@ data class DragonBallCharacterEntity(
     val deletedAt: String?,
     val page: Int,
     val createdAt: Long = System.currentTimeMillis(),
+    var isFavorite: Boolean = false
     )

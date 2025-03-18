@@ -15,7 +15,7 @@ import com.rentx.dragonballwiki.data.local.DragonBallCharacterEntity
 import com.rentx.dragonballwiki.data.mappers.toDragonBallCharacter
 import com.rentx.dragonballwiki.model.DragonBallCharacter
 import com.rentx.dragonballwiki.presentation.components.DragonBallCharactersItem
-import com.rentx.dragonballwiki.presentation.components.SelectedCharacterVM
+import com.rentx.dragonballwiki.presentation.SelectedCharacterVM
 import com.rentx.dragonballwiki.ui.theme.DBOrange
 
 @Composable
@@ -23,7 +23,7 @@ fun DragonBallHomePage(
     modifier: Modifier,
     viewModel: HomePageVM,
     selectedCharacterVM: SelectedCharacterVM,
-    onCharacterClick: (DragonBallCharacter) -> Unit
+    onCharacterClick: (DragonBallCharacterEntity) -> Unit
 ) {
     val pagingData = viewModel.flow.collectAsLazyPagingItems()
     DragonBallHomePageImpl(modifier, pagingData = pagingData, onCharacterClick)
@@ -33,7 +33,7 @@ fun DragonBallHomePage(
 private fun DragonBallHomePageImpl(
     modifier: Modifier,
     pagingData: LazyPagingItems<DragonBallCharacterEntity>,
-    onCharacterClick: (DragonBallCharacter) -> Unit
+    onCharacterClick: (DragonBallCharacterEntity) -> Unit
 ) {
     LazyColumn(
         state = rememberLazyListState(),
@@ -48,7 +48,7 @@ private fun DragonBallHomePageImpl(
                 DragonBallCharactersItem(
                     modifier = Modifier
                         .fillMaxWidth()
-                        .clickable { onCharacterClick(it.toDragonBallCharacter()) },
+                        .clickable { onCharacterClick(it) },
                     character = it.toDragonBallCharacter()
                 )
             }

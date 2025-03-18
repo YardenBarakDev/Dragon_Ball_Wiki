@@ -15,7 +15,7 @@ fun DragonBallCharactersResponse.toDragonBallCharacter(): List<DragonBallCharact
             description = it.description,
             image = it.image,
             affiliation = it.affiliation,
-            deletedAt = it.deletedAt
+            deletedAt = it.deletedAt,
         )
     }
 }
@@ -30,6 +30,7 @@ fun DragonBallCharacterEntity.toDragonBallCharacter(): DragonBallCharacter {
         description = description,
         image = image,
         affiliation = affiliation,
-        deletedAt = deletedAt
+        deletedAt = deletedAt,
+        isFavorite = isFavorite
     )
 }

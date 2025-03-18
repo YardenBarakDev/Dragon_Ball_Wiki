@@ -53,20 +53,12 @@ dependencies {
     implementation(libs.androidx.material3)
     implementation(libs.kotlinx.coroutines.android)
 
-    implementation(libs.ktor.client.core)
-    implementation(libs.ktor.client.okhttp)
-    implementation(libs.ktor.client.content.negotiation)
-    implementation(libs.ktor.serialization.kotlinx.json)
-    implementation(libs.ktor.client.logging)
+    implementation(libs.bundles.ktor)
+    implementation(libs.bundles.coil)
 
     implementation(libs.kotlinx.serialization.json)
 
     implementation("androidx.lifecycle:lifecycle-viewmodel-compose:2.6.2")
-    implementation("io.coil-kt.coil3:coil-compose:3.1.0")
-    implementation("io.coil-kt.coil3:coil-network-okhttp:3.1.0")
-    implementation("io.coil-kt.coil3:coil-network-okhttp:3.1.0")
-    implementation("io.coil-kt.coil3:coil-network-ktor2:3.1.0")
-    implementation("io.coil-kt.coil3:coil-network-ktor3:3.1.0")
 
     implementation("io.insert-koin:koin-android:4.0.0")
     implementation("io.insert-koin:koin-androidx-compose:4.0.0")

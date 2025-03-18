@@ -28,22 +28,33 @@ import coil3.compose.AsyncImagePreviewHandler
 import coil3.compose.LocalAsyncImagePreviewHandler
 import coil3.compose.rememberAsyncImagePainter
 import com.rentx.dragonballwiki.R
-import com.rentx.dragonballwiki.model.DragonBallCharacter
+import com.rentx.dragonballwiki.data.local.DragonBallCharacterEntity
 import com.rentx.dragonballwiki.presentation.components.CharacterImage
-import com.rentx.dragonballwiki.presentation.components.SelectedCharacterVM
+import com.rentx.dragonballwiki.presentation.SelectedCharacterVM
 import com.rentx.dragonballwiki.presentation.components.sectionText
 
 @Composable
 fun CharacterPage(modifier: Modifier, viewModel: SelectedCharacterVM, onBackClick: () -> Unit) {
-    CharacterPageImpl(modifier, viewModel.character, onBackClick)
+   val character = viewModel.character.collectAsState().value
+    CharacterPageImpl(modifier,character, onBackClick){
+        character?.let {
+            if(it.isFavorite){
+                viewModel.removeFromFavorites(it.id)
+            }else{
+                viewModel.addToFavorites(it.id)
+            }
+            viewModel.onSelectedCharacter(it.copy(isFavorite = !it.isFavorite))
+        }
+    }
 }
 
 @OptIn(ExperimentalCoilApi::class)
 @Composable
 fun CharacterPageImpl(
     modifier: Modifier,
-    character: DragonBallCharacter?,
-    onBackClick: () -> Unit
+    character: DragonBallCharacterEntity?,
+    onBackClick: () -> Unit,
+    onFavoriteClick: () -> Unit,
 ) {
     Column(
         modifier = modifier
@@ -56,14 +67,16 @@ fun CharacterPageImpl(
         val previewHandler = AsyncImagePreviewHandler {
             ColorImage(Color.Red.toArgb())
         }
-        Row(modifier = Modifier
-            .fillMaxWidth()
-            .padding(horizontal = 12.dp),
+        Row(
+            modifier = Modifier
+                .fillMaxWidth()
+                .padding(horizontal = 12.dp),
             horizontalArrangement = Arrangement.SpaceBetween
         ) {
             Image(
-                painter = painterResource(R.drawable.baseline_favorite_24),
-                contentDescription = null
+                painter = painterResource(if (character?.isFavorite == true) R.drawable.baseline_favorite_24 else R.drawable.baseline_favorite_border_24),
+                contentDescription = null,
+                modifier = Modifier.clickable { onFavoriteClick.invoke() }
             )
             Image(
                 modifier = Modifier
@@ -97,7 +110,7 @@ fun CharacterPageImpl(
 private fun CharacterPagePrev() {
     CharacterPageImpl(
         Modifier,
-        character = DragonBallCharacter(
+        character = DragonBallCharacterEntity(
             name = "Guko",
             ki = "5000",
             maxKi = "10000000000",
@@ -106,8 +119,12 @@ private fun CharacterPagePrev() {
             description = "asfhaksjfhas hfjkashfa sjksfhkja sflsfoasf uiasgfuiasg fuiasg fuiagsfuiasgf uiagsfiu af",
             image = "",
             affiliation = "Z warrior",
-            deletedAt = null
+            deletedAt = null,
+            isFavorite = false,
+            id = 1,
+            page = 2,
+            createdAt = 111L
         ),
-        onBackClick = {}
+        onBackClick = {}, {}
     )
 }

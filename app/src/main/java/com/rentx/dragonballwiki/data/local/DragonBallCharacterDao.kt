@@ -5,6 +5,7 @@ import androidx.room.Dao
 import androidx.room.Insert
 import androidx.room.OnConflictStrategy
 import androidx.room.Query
+import kotlinx.coroutines.flow.Flow
 
 @Dao
 interface DragonBallCharacterDao {
@@ -30,6 +31,10 @@ interface DragonBallCharacterDao {
     @Query("SELECT COUNT(*) FROM DragonBallCharacterEntity")
     suspend fun count(): Int
 
-    @Query("SELECT createdAt FROM remote_keys WHERE page = :page LIMIT 1")
-    fun getCreationTime(page: Int): Long?
+    @Query("UPDATE DragonBallCharacterEntity SET isFavorite = :isFavorite WHERE id = :id")
+    suspend fun updateFavoriteStatus(id: Int, isFavorite: Boolean)
+
+    @Query("SELECT * FROM DragonBallCharacterEntity WHERE isFavorite = 1")
+    fun getFavoriteCharacters(): Flow<List<DragonBallCharacterEntity>>
+
 }

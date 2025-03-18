@@ -12,5 +12,6 @@ data class DragonBallCharacter(
     val description: String,
     val image: String,
     val affiliation: String,
-    val deletedAt: String?
+    val deletedAt: String?,
+    val isFavorite: Boolean = false
 )

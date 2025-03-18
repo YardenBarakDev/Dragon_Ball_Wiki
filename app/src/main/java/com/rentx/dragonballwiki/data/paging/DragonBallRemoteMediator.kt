@@ -26,8 +26,7 @@ class DragonBallRemoteMediator(
 
     override suspend fun initialize(): InitializeAction {
         return withContext(Dispatchers.IO) {
-            if (System.currentTimeMillis() - (characterDao.getCreationTime(page) ?: 0) < cacheTimeout
-            ) {
+            if (System.currentTimeMillis() - 0 > cacheTimeout ) {
                 InitializeAction.SKIP_INITIAL_REFRESH
             } else {
                 //InitializeAction.LAUNCH_INITIAL_REFRESH
