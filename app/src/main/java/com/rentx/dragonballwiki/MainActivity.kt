@@ -14,11 +14,11 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import com.rentx.dragonballwiki.navigation.Route
-import com.rentx.dragonballwiki.presentation.FavoritesCharactersVM
+import com.rentx.favorites.presentation.FavoritesCharactersVM
 import com.rentx.dragonballwiki.presentation.character_page.CharacterPage
-import com.rentx.dragonballwiki.presentation.components.MainHeader
+import com.rentx.dragonballwiki.presentation.MainHeader
 import com.rentx.dragonballwiki.presentation.SelectedCharacterVM
-import com.rentx.dragonballwiki.presentation.favorites.FavoritesScreen
+import com.rentx.favorites.presentation.FavoritesScreen
 import com.rentx.dragonballwiki.presentation.home_page.HomePageVM
 import com.rentx.dragonballwiki.ui.theme.DragonBallWikiTheme
 import com.rentx.dragonballwiki.presentation.home_page.DragonBallHomePage

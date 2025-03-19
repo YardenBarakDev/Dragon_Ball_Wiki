@@ -1,7 +1,7 @@
 package com.rentx.dragonballwiki.data.repository
 
-import com.rentx.core.local_db.RoomDBConstructor
-import com.rentx.dragonballwiki.presentation.favorites.DragonBallFavoritesRepository
+import com.rentx.core.data.local_db.RoomDBConstructor
+import com.rentx.favorites.data.repository.DragonBallFavoritesRepository
 
 class DragonBallFavoritesRepositoryImpl(
     private val database: RoomDBConstructor,

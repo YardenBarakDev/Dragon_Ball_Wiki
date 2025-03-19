@@ -1,17 +1,16 @@
 package com.rentx.dragonballwiki.di
 
 import androidx.room.Room
-import com.rentx.core.local_db.RoomDBConstructor
+import com.rentx.core.data.local_db.RoomDBConstructor
 import com.rentx.dragonballwiki.data.network.KtorRemoteDragonBallSource
 import com.rentx.dragonballwiki.data.network.RemoteDataSource
 import com.rentx.dragonballwiki.data.repository.DragonBallRepositoryImpl
-import com.rentx.dragonballwiki.data.paging.DragonBallPaging
 import com.rentx.dragonballwiki.data.repository.DragonBallFavoritesRepositoryImpl
 import com.rentx.dragonballwiki.model.DragonBallRepository
-import com.rentx.dragonballwiki.presentation.FavoritesCharactersVM
+import com.rentx.favorites.presentation.FavoritesCharactersVM
 import com.rentx.dragonballwiki.presentation.home_page.HomePageVM
 import com.rentx.dragonballwiki.presentation.SelectedCharacterVM
-import com.rentx.dragonballwiki.presentation.favorites.DragonBallFavoritesRepository
+import com.rentx.favorites.data.repository.DragonBallFavoritesRepository
 import io.ktor.client.HttpClient
 import io.ktor.client.engine.okhttp.OkHttp
 import io.ktor.client.plugins.contentnegotiation.ContentNegotiation
@@ -55,9 +54,6 @@ val appModule = module {
             }
         }
     }
-    factory {
-        DragonBallPaging(get())
-    }
     viewModel {
         HomePageVM(get(), get())
     }
@@ -71,9 +67,6 @@ val appModule = module {
         DragonBallFavoritesRepositoryImpl(get())
     }
 
-    factory {
-        DragonBallPaging(get())
-    }
     factory<RemoteDataSource> {
         KtorRemoteDragonBallSource(get())
     }

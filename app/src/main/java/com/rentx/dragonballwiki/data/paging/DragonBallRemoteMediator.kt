@@ -5,14 +5,15 @@ import androidx.paging.LoadType
 import androidx.paging.PagingState
 import androidx.paging.RemoteMediator
 import androidx.room.withTransaction
-import com.rentx.core.local_db.DragonBallCharacterEntity
-import com.rentx.core.local_db.RoomDBConstructor
+import com.rentx.core.data.local_db.DragonBallCharacterEntity
+import com.rentx.core.data.local_db.RoomDBConstructor
 import com.rentx.dragonballwiki.data.mappers.toDragonBallCharacterEntity
 import com.rentx.dragonballwiki.model.DragonBallRepository
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
 import kotlinx.io.IOException
 import java.util.concurrent.TimeUnit
+import kotlin.math.max
 
 @OptIn(ExperimentalPagingApi::class)
 class DragonBallRemoteMediator(
@@ -26,12 +27,11 @@ class DragonBallRemoteMediator(
 
     override suspend fun initialize(): InitializeAction {
         return withContext(Dispatchers.IO) {
-            if (System.currentTimeMillis() - 0 > cacheTimeout ) {
+            val dateCreated = characterDao.getCharacterById(1)?.createdAt ?: 0
+            if (System.currentTimeMillis() - dateCreated < cacheTimeout ) {
                 InitializeAction.SKIP_INITIAL_REFRESH
             } else {
-                //InitializeAction.LAUNCH_INITIAL_REFRESH
-                InitializeAction.SKIP_INITIAL_REFRESH
-
+                InitializeAction.LAUNCH_INITIAL_REFRESH
             }
         }
     }
@@ -45,12 +45,13 @@ class DragonBallRemoteMediator(
                 LoadType.REFRESH -> page
                 LoadType.PREPEND -> return MediatorResult.Success(endOfPaginationReached = true)
                 LoadType.APPEND -> {
-                    state.lastItemOrNull()?.page?.let {
-                        val a = characterDao.getCharactersByPageNumber(page)
-                        if (a.isNotEmpty()){
-                            MediatorResult.Success(endOfPaginationReached = true)
-                        }
-                        page
+                    val lastItem = state.lastItemOrNull()
+                    if (lastItem != null) {
+                        val charactersFromNextPage = characterDao.getCharactersByPageNumber(max(lastItem.page + 1, page))
+                       if (charactersFromNextPage.isNotEmpty()){
+                           return MediatorResult.Success(endOfPaginationReached = true)
+                       }
+                        page = lastItem.page + 1
                     }
                     page
                 }

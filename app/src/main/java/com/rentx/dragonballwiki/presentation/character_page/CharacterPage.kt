@@ -21,11 +21,9 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.CompositionLocalProvider
 import androidx.compose.runtime.collectAsState
-import androidx.compose.runtime.derivedStateOf
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
-import androidx.compose.runtime.rememberUpdatedState
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.scale
@@ -42,11 +40,10 @@ import coil3.compose.AsyncImagePreviewHandler
 import coil3.compose.LocalAsyncImagePreviewHandler
 import coil3.compose.rememberAsyncImagePainter
 import com.rentx.dragonballwiki.R
-import com.rentx.core.local_db.DragonBallCharacterEntity
-import com.rentx.dragonballwiki.presentation.components.CharacterImage
+import com.rentx.core.data.local_db.DragonBallCharacterEntity
+import com.rentx.core.presentation.components.CharacterImage
 import com.rentx.dragonballwiki.presentation.SelectedCharacterVM
-import com.rentx.dragonballwiki.presentation.components.CharactersDetailsSection
-import com.rentx.dragonballwiki.presentation.components.sectionText
+import com.rentx.core.presentation.components.CharactersDetailsSection
 import com.rentx.dragonballwiki.ui.theme.DBBackground
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers

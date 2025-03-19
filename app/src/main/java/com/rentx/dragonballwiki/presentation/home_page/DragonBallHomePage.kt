@@ -15,8 +15,8 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import androidx.paging.compose.LazyPagingItems
 import androidx.paging.compose.collectAsLazyPagingItems
-import com.rentx.core.local_db.DragonBallCharacterEntity
-import com.rentx.dragonballwiki.presentation.components.DragonBallCharactersItem
+import com.rentx.core.data.local_db.DragonBallCharacterEntity
+import com.rentx.core.presentation.components.DragonBallCharactersItem
 import com.rentx.dragonballwiki.ui.theme.DBBackground
 
 @Composable

@@ -2,11 +2,9 @@ package com.rentx.dragonballwiki.presentation
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.rentx.core.local_db.DragonBallCharacterEntity
-import com.rentx.dragonballwiki.presentation.favorites.DragonBallFavoritesRepository
+import com.rentx.core.data.local_db.DragonBallCharacterEntity
+import com.rentx.favorites.data.repository.DragonBallFavoritesRepository
 import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.flow.MutableStateFlow
-import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.launch
 
 class SelectedCharacterVM(private val favoritesRepository: DragonBallFavoritesRepository): ViewModel() {
