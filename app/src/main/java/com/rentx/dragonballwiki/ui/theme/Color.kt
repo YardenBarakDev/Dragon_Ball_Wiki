@@ -11,3 +11,5 @@ val PurpleGrey40 = Color(0xFF625b71)
 val Pink40 = Color(0xFF7D5260)
 
 val DBOrange = Color(0xFFFA4714)
+val DBBackground = Color(0xFF272B33)
+val DBSection = Color(0xFF3D3E44)

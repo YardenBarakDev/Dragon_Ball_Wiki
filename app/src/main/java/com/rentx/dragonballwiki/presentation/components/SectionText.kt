@@ -13,14 +13,14 @@ fun sectionText(q: String, a: String): AnnotatedString {
     return buildAnnotatedString {
         withStyle(style = SpanStyle(
             fontSize = 24.sp,
-            color = Color(0xFFFB4813)
+            color = Color.White
         )
         ){
             append("$q: ")
         }
         withStyle(style = SpanStyle(
             fontSize = 22.sp,
-            color = Color.Black
+            color = Color(0xFFFBC02C)
         )
         ) {
             append(a)

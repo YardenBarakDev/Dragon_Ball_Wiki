@@ -2,26 +2,27 @@ package com.rentx.dragonballwiki.presentation.home_page
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
+import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.rememberLazyListState
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.unit.dp
 import androidx.paging.compose.LazyPagingItems
 import androidx.paging.compose.collectAsLazyPagingItems
 import com.rentx.core.local_db.DragonBallCharacterEntity
-import com.rentx.dragonballwiki.data.mappers.toDragonBallCharacter
 import com.rentx.dragonballwiki.presentation.components.DragonBallCharactersItem
-import com.rentx.dragonballwiki.presentation.SelectedCharacterVM
-import com.rentx.dragonballwiki.ui.theme.DBOrange
+import com.rentx.dragonballwiki.ui.theme.DBBackground
 
 @Composable
 fun DragonBallHomePage(
     modifier: Modifier,
     viewModel: HomePageVM,
-    selectedCharacterVM: SelectedCharacterVM,
     onCharacterClick: (DragonBallCharacterEntity) -> Unit
 ) {
     val pagingData = viewModel.flow.collectAsLazyPagingItems()
@@ -38,8 +39,10 @@ private fun DragonBallHomePageImpl(
         state = rememberLazyListState(),
         modifier = modifier
             .fillMaxSize()
-            .background(DBOrange),
+            .background(DBBackground),
         horizontalAlignment = Alignment.CenterHorizontally,
+        contentPadding = PaddingValues(8.dp),
+        verticalArrangement = Arrangement.spacedBy(20.dp)
     )
     {
         items(pagingData.itemCount) { index ->
@@ -48,7 +51,7 @@ private fun DragonBallHomePageImpl(
                     modifier = Modifier
                         .fillMaxWidth()
                         .clickable { onCharacterClick(it) },
-                    character = it.toDragonBallCharacter()
+                    character = it
                 )
             }
         }

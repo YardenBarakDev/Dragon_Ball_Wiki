@@ -4,6 +4,7 @@ import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
+import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.Scaffold
@@ -21,6 +22,7 @@ import com.rentx.dragonballwiki.presentation.favorites.FavoritesScreen
 import com.rentx.dragonballwiki.presentation.home_page.HomePageVM
 import com.rentx.dragonballwiki.ui.theme.DragonBallWikiTheme
 import com.rentx.dragonballwiki.presentation.home_page.DragonBallHomePage
+import com.rentx.dragonballwiki.ui.theme.DBBackground
 import org.koin.androidx.compose.koinViewModel
 
 
@@ -35,13 +37,15 @@ class MainActivity : ComponentActivity() {
                 val selectedCharacterVM = koinViewModel<SelectedCharacterVM>()
                 val navController = rememberNavController()
                 Scaffold(
-                    modifier = Modifier.fillMaxSize(),
+                    modifier = Modifier
+                        .fillMaxSize()
+                        .background(DBBackground),
                     topBar = {
-                        MainHeader{
+                        MainHeader {
                             navController.navigate(Route.FavoriteScreen)
                         }
                     },
-                     content = { padding ->
+                    content = { padding ->
                         NavHost(
                             navController = navController,
                             startDestination = Route.DragonBallHomePage
@@ -52,7 +56,7 @@ class MainActivity : ComponentActivity() {
                                 DragonBallHomePage(
                                     Modifier.padding(
                                         padding
-                                    ), viewModel, selectedCharacterVM
+                                    ), viewModel
                                 ) { character ->
                                     selectedCharacterVM.onSelectedCharacter(character)
                                     navController.navigate(Route.CharacterDetail)
@@ -63,7 +67,11 @@ class MainActivity : ComponentActivity() {
                             }
                             composable<Route.CharacterDetail> {
                                 CharacterPage(Modifier.padding(padding), selectedCharacterVM) {
-                                    navController.popBackStack()
+                                    navController.navigate(Route.DragonBallHomePage) {
+                                        popUpTo(navController.graph.startDestinationId) {
+                                            inclusive = true
+                                        }
+                                    }
                                 }
                             }
                             composable<Route.FavoriteScreen> {
